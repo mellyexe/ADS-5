@@ -17,6 +17,8 @@ int getPriority(char c) {
         return 3;
     case '/':
         return 3;
+    default:
+        return -1;
     }
 }
 
