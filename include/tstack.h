@@ -9,7 +9,7 @@ class TStack {
  private:
     T* arr;
     int top;
-    
+
  public:
   TStack() {
         arr = new T[size];
@@ -18,19 +18,19 @@ class TStack {
     void push(T value) {
         if (isFull())
             throw std::string("Stack is Full!");
-        else 
+        else
           arr[++top] = value;
     }
     const T& pop() {
         if (isEmpty())
             throw std::string("Stack is Empty!");
-        else 
+        else
           return arr[top--];
     }
     const T& peek() {
         if (isEmpty())
             throw std::string("Stack is Empty!");
-        else 
+        else
           return arr[top];
     }
     bool isEmpty() const {
