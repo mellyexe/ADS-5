@@ -13,7 +13,7 @@ class TStack {
  public:
   TStack() {
         arr = new T[size];
-        head = -1;
+        top = -1;
     }
     void push(T value) {
         if (isFull())
