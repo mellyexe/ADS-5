@@ -32,26 +32,23 @@ std::string infx2pstfx(std::string inf) {
                 c = inf[i];
                 if (isdigit(c)) {
                     result += c;
-                }
-                else {
+                } else {
                     i--;
                     break;
                 }
             }
             result += ' ';
-        }
-        else if (c == '(') {
+        } else if (c == '(') {
             strStack.push(c);
-        }
-        else if (c == ')') {
+        } else if (c == ')') {
             while (strStack.peek() != '(') {
                 result += strStack.pop();
                 result += ' ';
             }
             strStack.pop();
-        }
-        else {
-            while (!strStack.isEmpty() && getPriority(c) <= getPriority(strStack.peek())) {
+        } else {
+            while (!strStack.isEmpty() && \
+                   getPriority(c) <= getPriority(strStack.peek())) {
                 result += strStack.pop();
                 result += ' ';
             }
@@ -70,28 +67,25 @@ int eval(std::string pref) {
     TStack<char, 100>  intStack;
     std::string number = "";
     int i = 0;
-    while (i < post.length()) {
-        char c = post[i];
+    while (i < pref.length()) {
+        char c = pref[i];
         if (isdigit(c)) {
             number += c;
-            while (++i < post.length()) {
-                c = post[i];
+            while (++i < pref.length()) {
+                c = pref[i];
                 if (isdigit(c)) {
                     number += c;
-                }
-                else {
+                } else {
                     i--;
                     break;
                 }
             }
             intStack.push(atoi(number.c_str()));
             number = "";
-        }
-        else if (c == ' ') {
+        } else if (c == ' ') {
             i++;
             continue;
-        }
-        else {
+        } else {
             int num1 = intStack.pop();
             int num2 = intStack.pop();
             switch (c) {
